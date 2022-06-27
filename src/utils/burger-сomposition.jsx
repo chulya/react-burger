@@ -1,16 +1,14 @@
-
-
 export const burgerComposition = [
- {
-    type: 'bun',
-    text: 'Булки',
+  {
+    type: "bun",
+    text: "Булки",
   },
   {
-    type: 'main',
-    text: 'Начинки'
+    type: "main",
+    text: "Начинки",
   },
   {
-    type: 'sauce',
-    text: 'Соусы'
-  }
-]
+    type: "sauce",
+    text: "Соусы",
+  },
+];

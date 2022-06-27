@@ -30,4 +30,13 @@
 	background: #8585ad;
 }
 
+.navigation {
+	display: flex;
+	flex-direction: row;  
+}
+
+.link {
+  text-decoration:none;
+}
+
 
