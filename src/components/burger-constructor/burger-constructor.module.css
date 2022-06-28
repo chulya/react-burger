@@ -1,0 +1,48 @@
+.constructor {
+	max-width: 600px;
+	width: 100%;
+	margin: 0;
+}
+
+.items_block {
+  width: 585px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.list {
+  height: 464px;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.list::-webkit-scrollbar {
+	width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: #2F2F37;
+}
+
+.list::-webkit-scrollbar-thumb {
+	background: #8585ad;
+}
+
+.order {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.bill {
+	display: flex;
+	align-items: center;
+}
+
