@@ -1,42 +1,47 @@
 .section {
-	width: 600px;
+  width: 600px;
   height: 760px;
 }
 
 .title {
-	text-align: left;
-	padding-top: 40px;
+  text-align: left;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  width: 100%;
+  display: block;
+  height: 40px;
 }
 
 .list {
-  width: 600px;
-	list-style: none;
-	margin: 0;
-	padding-left: 0;
-	height: 733px;
-	overflow-y: auto;
-	overflow-x: hidden;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  max-height: 733px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .list::-webkit-scrollbar {
-	width: 8px;
+  width: 8px;
 }
 
 .list::-webkit-scrollbar-track {
-  background: #2F2F37;
+  background: #2f2f37;
 }
 
 .list::-webkit-scrollbar-thumb {
-	background: #8585ad;
+  background: #8585ad;
 }
 
 .navigation {
-	display: flex;
-	flex-direction: row;  
+  display: flex;
+  flex-direction: row;
 }
 
 .link {
-  text-decoration:none;
+  text-decoration: none;
 }
 
-
+.text {
+  text-align: left;
+}

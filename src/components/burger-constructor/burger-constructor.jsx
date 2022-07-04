@@ -9,7 +9,11 @@ import { ConstructorItem } from "../constructor-item/constructor-item";
 import burgerConstructorStyle from "./burger-constructor.module.css";
 import { data } from "../../utils/data";
 
-export const BurgerConstructor = () => {
+export const BurgerConstructor = ({ ingredients, onButtonOrderClick }) => {
+  const ingredientsArray = ingredients.filter(
+    (element) => element.type !== "bun"
+  );
+
   return (
     <section className={`${burgerConstructorStyle.constructor} pl-10 pt-25`}>
       <article className={`${burgerConstructorStyle.items_block} pr-2`}>
@@ -43,7 +47,11 @@ export const BurgerConstructor = () => {
           <h2 className="text text_type_digits-medium pr-2">610</h2>
           <CurrencyIcon type="primary" />
         </div>
-        <Button type="primary" size="large">
+        <Button
+          type="primary"
+          size="large"
+          onClick={() => onButtonOrderClick()}
+        >
           Оформить заказ
         </Button>
       </article>

@@ -7,26 +7,27 @@ import {
 import { ingredientType } from "../../utils/types";
 import ingredientsItemStyle from "./ingredients-card.module.css";
 
-export const IngredientsItem = (props) => {
+export const IngredientsItem = ({ card }) => {
+  const [count, setCount] = React.useState(0);
   return (
-    <section className={`${ingredientsItemStyle.item} pl-4`}>
-      <Counter count={1} size="default" />
-      <img
-        className={`${ingredientsItemStyle.image}`}
-        src={props.image}
-        alt={props.name}
-      />
-      <div className={`${ingredientsItemStyle.price} pt-1 pb-2`}>
-        <p className="text text_type_digits-default pr-2">{props.price}</p>
+    <article className={ingredientsItemStyle.item}>
+      {count !== 0 && <Counter count={count} size="default" />}
+      <img src={`${card.image}`} alt={card.name} className="pl-4 pr-4" />
+      <p
+        className={`${ingredientsItemStyle.price} text text_type_digits-default pt-1 pb-1`}
+      >
+        {card.price}
         <CurrencyIcon type="primary" />
-      </div>
-      <p className="text text_type_main-default pb-10">{props.name}</p>
-    </section>
+      </p>
+      <p className={`${ingredientsItemStyle.name} text text_type_main-default`}>
+        {card.name}
+      </p>
+    </article>
   );
 };
 
 IngredientsItem.protoType = {
   image: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };

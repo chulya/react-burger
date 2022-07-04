@@ -1,16 +1,25 @@
 .item {
   position: relative;
   flex-direction: column;
-	max-width: 272px;
-	width: 100%;
-	cursor: pointer;
+  max-width: 272px;
+  height: 208px;
+  width: 100%;
+  cursor: pointer;
 }
 
 .image {
-	max-width: 240px;
+  max-width: 240px;
 }
 
 .price {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 9px;
+}
+
+.name {
+  display: block;
+  height: 48px;
+  text-align: center;
 }

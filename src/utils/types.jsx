@@ -15,3 +15,4 @@ export const ingredientType = PropTypes.shape({
   __v: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
 });
+
