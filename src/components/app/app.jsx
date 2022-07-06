@@ -1,23 +1,22 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import appStyle from "./app.module.css";
-import { AppHeader } from "../app-header/app-header";
-import { BurgerIngredients } from "../burger-ingredients/burger-ingredients";
-import { BurgerConstructor } from "../burger-constructor/burger-constructor";
-import { OrderDetails } from "../order-details/order-details";
-import { IngredientDetails } from "../ingredient-details/ingredient-details";
-import { Modal } from "../modal/modal";
+import AppHeader from "../app-header/app-header";
+import BurgerIngredients from "../burger-ingredients/burger-ingredients";
+import BurgerConstructor from "../burger-constructor/burger-constructor";
+import OrderDetails from "../order-details/order-details";
+import IngredientDetails from "../ingredient-details/ingredient-details";
+import Modal from "../modal/modal";
+import { API } from "../../utils/const";
 
-const urlApi = "https://norma.nomoreparties.space/api/ingredients";
-
-export const App = () => {
-  const [ingredients, setIngredients] = React.useState([]);
-  const [modalIngredientOpened, setModalIngredientOpened] =
-    React.useState(false);
-  const [modalOrderOpened, setModalOrderOpened] = React.useState(false);
-  const [ingredientSelected, setIngredientSelected] = React.useState({});
+const App = () => {
+  const [isIngredientOpened, setIngredientOpened] = useState(false);
+  const [isOrderOpened, setOrderOpened] = useState(false);
+  const [ingredients, setIngredients] = useState([]);
+  const [ingredientSelected, setIngredientSelected] = useState({});
 
   const getIngredients = () => {
-    fetch(urlApi)
+    fetch(API)
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -32,33 +31,26 @@ export const App = () => {
       });
   };
 
-  React.useEffect(() => {
-    getIngredients();
+  useEffect(() => {
+    getIngredients(ingredients, setIngredients);
   }, []);
 
-  const closeModalIngredient = () => {
-    setModalIngredientOpened(false);
+  const closeModal = () => {
+    setOrderOpened(false);
+    setIngredientOpened(false);
   };
 
-  const closeModalOrder = () => {
-    setModalOrderOpened(false);
-  };
-
-  const handleEscCloseOrder = (evt) => {
-    evt.key === "Escape" && closeModalOrder();
-  };
-
-  const handleEscCloseIngredient = (evt) => {
-    evt.key === "Escape" && closeModalIngredient();
+  const handleEscClose = (evt) => {
+    evt.key === "Escape" && closeModal();
   };
 
   const openModalIngredient = (ingredient) => {
     setIngredientSelected(ingredient);
-    setModalIngredientOpened(true);
+    setIngredientOpened(true);
   };
 
   const openModalOrder = () => {
-    setModalOrderOpened(true);
+    setOrderOpened(true);
   };
 
   return (
@@ -74,19 +66,18 @@ export const App = () => {
           onButtonOrderClick={openModalOrder}
         />
       </main>
-      {modalIngredientOpened && (
-        <Modal
-          onCloseClick={closeModalIngredient}
-          onCloseEsc={handleEscCloseIngredient}
-        >
+      {isIngredientOpened && (
+        <Modal closePopup={closeModal} onCloseEsc={handleEscClose}>
           <IngredientDetails ingredient={ingredientSelected} />
         </Modal>
       )}
-      {modalOrderOpened && (
-        <Modal onCloseClick={closeModalOrder} onCloseEsc={handleEscCloseOrder}>
+      {isOrderOpened && (
+        <Modal closePopup={closeModal} onCloseEsc={handleEscClose}>
           <OrderDetails />
         </Modal>
       )}
     </div>
   );
 };
+
+export default App;

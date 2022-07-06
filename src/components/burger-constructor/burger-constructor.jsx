@@ -1,19 +1,15 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import {
   ConstructorElement,
   CurrencyIcon,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ConstructorItem } from "../constructor-item/constructor-item";
+import ConstructorItem from "../constructor-item/constructor-item";
 import burgerConstructorStyle from "./burger-constructor.module.css";
 import { data } from "../../utils/data";
 
-export const BurgerConstructor = ({ ingredients, onButtonOrderClick }) => {
-  const ingredientsArray = ingredients.filter(
-    (element) => element.type !== "bun"
-  );
-
+const BurgerConstructor = ({ onButtonOrderClick }) => {
   return (
     <section className={`${burgerConstructorStyle.constructor} pl-10 pt-25`}>
       <article className={`${burgerConstructorStyle.items_block} pr-2`}>
@@ -58,3 +54,9 @@ export const BurgerConstructor = ({ ingredients, onButtonOrderClick }) => {
     </section>
   );
 };
+
+BurgerConstructor.propTypes = {
+  onButtonOrderClick: PropTypes.func.isRequired
+}
+
+export default BurgerConstructor;

@@ -1,9 +1,9 @@
-// import {IngredientProperty} from "../ingredient-property/ingredient-property";
+import React from "react";
 import PropTypes from "prop-types";
 import { ingredientType } from "../../utils/types";
 import ingredientDetailsStyles from "./ingredient-details.module.css";
 
-export const IngredientDetails = ({ ingredient }) => {
+const IngredientDetails = ({ ingredient }) => {
   return (
     <div className={ingredientDetailsStyles.item}>
       <h2
@@ -50,3 +50,6 @@ export const IngredientDetails = ({ ingredient }) => {
 IngredientDetails.propTypes = {
   ingredient: ingredientType.isRequired,
 };
+
+
+export default IngredientDetails;

@@ -7,7 +7,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import headerStyle from "./app-header.module.css";
 
-export const AppHeader = () => {
+const AppHeader = () => {
   return (
     <header className={`${headerStyle.header} pt-2 pb-4`}>
       <nav className={headerStyle.menu}>
@@ -47,3 +47,5 @@ export const AppHeader = () => {
     </header>
   );
 };
+
+export default AppHeader;

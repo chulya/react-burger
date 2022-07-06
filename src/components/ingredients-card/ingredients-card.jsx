@@ -4,10 +4,9 @@ import {
   CurrencyIcon,
   Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ingredientType } from "../../utils/types";
 import ingredientsItemStyle from "./ingredients-card.module.css";
 
-export const IngredientsItem = ({ card }) => {
+const IngredientsItem = ({ card }) => {
   const [count, setCount] = React.useState(0);
   return (
     <article className={ingredientsItemStyle.item}>
@@ -31,3 +30,5 @@ IngredientsItem.protoType = {
   price: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
+
+export default IngredientsItem;
