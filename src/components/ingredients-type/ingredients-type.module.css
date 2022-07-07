@@ -1,15 +1,13 @@
 .list {
 	list-style: none;
-	max-width: 592px;
+	max-width: 600px;
 	width: 100%;
 	margin: 0;
 	padding: 0;
 	display: flex;
 	flex-wrap: wrap;
-	column-gap: 8px;
+	gap: 32px 24px;
+  box-sizing: border-box;
 }
 
-.text {
-	text-align: left;
-}
 

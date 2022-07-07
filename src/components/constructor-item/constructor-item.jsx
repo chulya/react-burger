@@ -7,7 +7,7 @@ import {
 import { ingredientType } from "../../utils/types";
 import constructorItemStyle from "./constructor-item.module.css";
 
-export const ConstructorItem = (props) => {
+const ConstructorItem = (props) => {
   return (
     <article className={`${constructorItemStyle.item} pt-4 pr-3`}>
       <DragIcon type="primary" />
@@ -23,3 +23,6 @@ export const ConstructorItem = (props) => {
 ConstructorItem.protoType = {
   items: ingredientType.isRequired,
 };
+
+
+export default ConstructorItem;

@@ -1,30 +1,31 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import {
   ConstructorElement,
   CurrencyIcon,
   Button,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import { ConstructorItem } from "../constructor-item/constructor-item";
+import ConstructorItem from "../constructor-item/constructor-item";
 import burgerConstructorStyle from "./burger-constructor.module.css";
 import { data } from "../../utils/data";
 
-export const BurgerConstructor = () => {
+const BurgerConstructor = ({ onButtonOrderClick }) => {
+  const bun = data.find(item => item.type === 'bun')
   return (
     <section className={`${burgerConstructorStyle.constructor} pl-10 pt-25`}>
       <article className={`${burgerConstructorStyle.items_block} pr-2`}>
         <ConstructorElement
           type="top"
           isLocked={true}
-          text={"Краторная булка N-200i (верх)"}
-          price={20}
-          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+          text={`${bun.name} (верх)`}
+          price={bun.price}
+          thumbnail={bun.image_mobile}
         />
 
         <ul className={`${burgerConstructorStyle.list} pr-2`}>
-          {data.map((item) => {
+          {data.map((item,index) => {
             if (item.type !== "bun") {
-              return <ConstructorItem key={item._id} items={item} />;
+              return <ConstructorItem key={index} items={item} />;
             }
           })}
         </ul>
@@ -32,9 +33,9 @@ export const BurgerConstructor = () => {
         <ConstructorElement
           type="bottom"
           isLocked={true}
-          text={"Краторная булка N-200i (низ)"}
-          price={20}
-          thumbnail={"https://code.s3.yandex.net/react/code/bun-02.png"}
+          text={`${bun.name} (низ)`}
+          price={bun.price}
+          thumbnail={bun.image_mobile}
         />
       </article>
 
@@ -43,10 +44,20 @@ export const BurgerConstructor = () => {
           <h2 className="text text_type_digits-medium pr-2">610</h2>
           <CurrencyIcon type="primary" />
         </div>
-        <Button type="primary" size="large">
+        <Button
+          type="primary"
+          size="large"
+          onClick={() => onButtonOrderClick()}
+        >
           Оформить заказ
         </Button>
       </article>
     </section>
   );
 };
+
+BurgerConstructor.propTypes = {
+  onButtonOrderClick: PropTypes.func.isRequired
+}
+
+export default BurgerConstructor;
